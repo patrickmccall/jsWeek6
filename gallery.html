@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Gallery</title>
-  <link href="css/mobile.css" type="text/css" rel="stylesheet"  />
-  <link href="css/tablet.css" type="text/css" rel="stylesheet" />
-  <link href="css/style1.css" rel="stylesheet" type="text/css" />
+  <link href="css/mobile.css" type="text/css" rel="stylesheet" media="(min-width:1px) and (max-width:500px)"/>
+  <link href="css/tablet.css" type="text/css" rel="stylesheet" media="(min-width:501px) and (max-width:900px)"/>
+  <link href="css/large.css"  type="text/css" rel="stylesheet"  media="(min-width:901px) and (max-width:2048px)"/>
 
 <!-- <script src="javascript/objects.js" type="text/javascript"> </script> -->
 
@@ -13,7 +13,10 @@
  
 
 <style>
-	
+	/*
+    creating media queries in CSS
+    typically best practice due to speed (the server just has one file to download)
+	*/
 </style>
 </head>
 <body> 
