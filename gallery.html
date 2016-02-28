@@ -1,123 +1,133 @@
 ﻿<!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Gallery</title>
-  
+  <meta charset="UTF-8">
+  <title>Gallery</title>
+
   <!--
- make sure we have cross device scaling of content standard
-so as not to get the "shrunken text" on mobile
- -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <link href="css/mobile.css" type="text/css" rel="stylesheet" media="screen and (min-width:1px) and (max-width:500px)"/>
-  <link href="css/tablet.css" type="text/css" rel="stylesheet" media="screen and (min-width:501px) and (max-width:900px)"/>
-  <link href="css/large.css"  type="text/css" rel="stylesheet"  media="screen and (min-width:901px) and (max-width:2048px)"/>
-  <link href="css/print.css" type="text/css"  rel="stylesheet" media="print"/> 
-<!-- <script src="javascript/objects.js" type="text/javascript"> </script> -->
-
+   make sure we have cross device scaling of content standard
+  so as not to get the "shrunken text" on mobile
+   -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="css/mobile.css" type="text/css" rel="stylesheet" media="screen and (min-width:1px) and (max-width:500px)" />
+  <link href="css/tablet.css" type="text/css" rel="stylesheet" media="screen and (min-width:501px) and (max-width:900px)" />
+  <link href="css/large.css" type="text/css" rel="stylesheet" media="screen and (min-width:901px) and (max-width:2048px)" />
+  <link href="css/print.css" type="text/css" rel="stylesheet" media="print" />
+  <!-- <script src="javascript/objects.js" type="text/javascript"> </script> -->
 
   <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
   <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
-<style>
-	/*
-    creating media queries in CSS
-    typically best practice due to speed (the server just has one file to download)
-	*/
-  /*@media (min-width:1px) and (max-width: 600px){
-    body{
-      width: 50%;
-      color: red;
-      background-color: yellow;
+  <style>
+      /*
+      creating media queries in CSS
+      typically best practice due to speed (the server just has one file to download)
+    */
+      /*@media (min-width:1px) and (max-width: 600px){
+      body{
+        width: 50%;
+        color: red;
+        background-color: yellow;
+      }
     }
-  }
-    @media (min-width:601px) and (max-width:900px){
-    body{
-      width: 100%;
-      color: red;
-      background-color: red;
-    }
-  }*/
-</style><script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"> </script> 
+      @media (min-width:601px) and (max-width:900px){
+      body{
+        width: 100%;
+        color: red;
+        background-color: red;
+      }
+    }*/
+  </style>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"> </script>
 </head>
-<body> 
+<body>
   <script>
     $("document").ready(function () {
-      //alert("some alert test");
-      $("img:gt(2)").css("border", "3px solid green");
-      $("li").css("border", "3px solid green");
-      $("li a").css("background-color", "red");
-      $("img:nth-child(2n)").css("border", " 5px solid blue");
-      $("img").addClass("error");
+      //creat event bindings on ALL tab panel li buttons
+      $(".tab-panels .tabs li").on("click", function () {
+        $(".tab-panels .tabs li.active").removeClass("active");
+        $(this).addClass("active");
+
+        var panelToShow = $(this).attr("rel");
+
+        $(".tab-panels .panel.active").slideUp(300, function () {
+          $(this).removeClass("active");
+          $("#" + panelToShow).slideDown(300, function () {
+            $(this).addClass("active");
+          })
+        })
+      });
+      ////alert("some alert test");
+      //$("img:gt(2)").css("border", "3px solid green");
+      //$("li").css("border", "3px solid green");
+      //$("li a").css("background-color", "red");
+      //$("img:nth-child(2n)").css("border", " 5px solid blue");
+      //$("img").addClass("error");
+
     })
   </script>
-	
-<header>
-	<h1>Gallery</h1> 
-	</header>
-	<nav id="navigation" role="navigation">
-		<ul>
-			<li><a href="index.html">Home</a></li>
-			<li><a href="sign-up.html">Sign Up</a></li>
-			<li><a href="gallery.html">Gallery</a></li>
-			<li><a href="#">About Us</a></li>
-			<li><a href="#">Contact Us</a></li>
-		</ul>
-	</nav>
-<div id="mainContent">
-	<h1>Gallery</h1>
-	<h2>Three Mediums</h2>
-	<div class="tab-panels">
-		<ul class="tabs">
-			<li rel="drawing" class="active">drawing</li>
-			<li rel="water-color">water color</li>
-			<li rel="oil">oil</li>
-		</ul>	
-		
-		<div id="drawing" class="panel active">
-			<img src="images/drawing/thumbs/artwork_1.jpg" />
-			<img src="images/drawing/thumbs/artwork_2.jpg" />
-			<img src="images/drawing/thumbs/artwork_3.jpg" />
-			<img src="images/drawing/thumbs/artwork_4.jpg" />
-			<img src="images/drawing/thumbs/artwork_5.jpg" />
-			<img src="images/drawing/thumbs/artwork_6.jpg" />
-			<img src="images/drawing/thumbs/artwork_7.jpg" />
-			<img src="images/drawing/thumbs/artwork_8.jpg" />
-			<img src="images/drawing/thumbs/artwork_9.jpg" />
-			<img src="images/drawing/thumbs/artwork_10.jpg" />
-		</div>
-			<div id="water-color" class="panel">
-			<img src="images/watercolor/thumbs/artwork_1.jpg" />
-			<img src="images/watercolor/thumbs/artwork_2.jpg" />
-			<img src="images/watercolor/thumbs/artwork_3.jpg" />
-			<img src="images/watercolor/thumbs/artwork_4.jpg" />
-			<img src="images/watercolor/thumbs/artwork_5.jpg" />
-			<img src="images/watercolor/thumbs/artwork_6.jpg" />
-			<img src="images/watercolor/thumbs/artwork_7.jpg" />
-			<img src="images/watercolor/thumbs/artwork_8.jpg" />
-			<img src="images/watercolor/thumbs/artwork_9.jpg" />
-			<img src="images/watercolor/thumbs/artwork_10.jpg" />
-		</div>
-		<div id="oil" class="panel">
-			<img src="images/oil/thumbs/artwork_1.jpg" />
-			<img src="images/oil/thumbs/artwork_2.jpg" />
-			<img src="images/oil/thumbs/artwork_3.jpg" />
-			<img src="images/oil/thumbs/artwork_4.jpg" />
-			<img src="images/oil/thumbs/artwork_5.jpg" />
-			<img src="images/oil/thumbs/artwork_6.jpg" />
-			<img src="images/oil/thumbs/artwork_7.jpg" />
-			<img src="images/oil/thumbs/artwork_8.jpg" />
-		</div>
-	</div><!--closing tab-panels -->
 
-</div><!-- closing primaryContent   -->
+  <header>
+    <h1>Gallery</h1>
+  </header>
+  <nav id="navigation" role="navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="sign-up.html">Sign Up</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>
+  <div id="mainContent">
+    <h1>Gallery</h1>
+    <h2>Three Mediums</h2>
+    <div class="tab-panels">
+      <ul class="tabs">
+        <li rel="drawing" class="active">drawing</li>
+        <li rel="water-color">water color</li>
+        <li rel="oil">oil</li>
+      </ul>
 
-<footer>
-	<p class="odd">
-		&copy; Copyright  by jason zeringue
-	</p>
-</footer>
-
+      <div id="drawing" class="panel active">
+        <img src="images/drawing/thumbs/artwork_1.jpg" />
+        <img src="images/drawing/thumbs/artwork_2.jpg" />
+        <img src="images/drawing/thumbs/artwork_3.jpg" />
+        <img src="images/drawing/thumbs/artwork_4.jpg" />
+        <img src="images/drawing/thumbs/artwork_5.jpg" />
+        <img src="images/drawing/thumbs/artwork_6.jpg" />
+        <img src="images/drawing/thumbs/artwork_7.jpg" />
+        <img src="images/drawing/thumbs/artwork_8.jpg" />
+        <img src="images/drawing/thumbs/artwork_9.jpg" />
+        <img src="images/drawing/thumbs/artwork_10.jpg" />
+      </div>
+      <div id="water-color" class="panel">
+        <img src="images/watercolor/thumbs/artwork_1.jpg" />
+        <img src="images/watercolor/thumbs/artwork_2.jpg" />
+        <img src="images/watercolor/thumbs/artwork_3.jpg" />
+        <img src="images/watercolor/thumbs/artwork_4.jpg" />
+        <img src="images/watercolor/thumbs/artwork_5.jpg" />
+        <img src="images/watercolor/thumbs/artwork_6.jpg" />
+        <img src="images/watercolor/thumbs/artwork_7.jpg" />
+        <img src="images/watercolor/thumbs/artwork_8.jpg" />
+        <img src="images/watercolor/thumbs/artwork_9.jpg" />
+        <img src="images/watercolor/thumbs/artwork_10.jpg" />
+      </div>
+      <div id="oil" class="panel">
+        <img src="images/oil/thumbs/artwork_1.jpg" />
+        <img src="images/oil/thumbs/artwork_2.jpg" />
+        <img src="images/oil/thumbs/artwork_3.jpg" />
+        <img src="images/oil/thumbs/artwork_4.jpg" />
+        <img src="images/oil/thumbs/artwork_5.jpg" />
+        <img src="images/oil/thumbs/artwork_6.jpg" />
+        <img src="images/oil/thumbs/artwork_7.jpg" />
+        <img src="images/oil/thumbs/artwork_8.jpg" />
+      </div>
+    </div><!--closing tab-panels -->
+  </div><!-- closing primaryContent   -->
+  <footer>
+    <p class="odd">
+      &copy; Copyright  by jason zeringue
+    </p>
+  </footer>
 </body>
 </html>
